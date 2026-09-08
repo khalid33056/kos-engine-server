@@ -57,7 +57,7 @@ app.all('/connect', (req, res) => {
       { game_package: "com.miniclip.eightballpool", game_name: "8 Ball Pool", game_version: "56.29.2", game_ver_code: 4014, game_image_url: BASE_URL + "/cdn/logo/eightball.png", expiry: "2099-12-31" },
       { game_package: "com.miniclip.carrom", game_name: "Carrom Pool", game_version: "19.4.0", game_ver_code: 1477, game_image_url: BASE_URL + "/cdn/logo/carrom.png", expiry: "2099-12-31" }
     ],
-    key_info: [{ key_string: "ACTIVE", valid: true, expiry: "2099-12-31", type: "premium", max_devices: 99, game_package: "com.miniclip.eightballpool" }],
+    key_info: [{ key_string: "ACTIVE", valid: true, expiry: "2099-12-31", type: "premium", max_devices: 99, game_package: "com.miniclip.eightballpool", seller_name: "Vortex" }],
     unlockable_games: [
       { game_package: "com.miniclip.eightballpool" },
       { game_package: "com.miniclip.carrom" }
