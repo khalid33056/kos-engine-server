@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const BASE_URL = 'https://kos-engine-server-1.onrender.com';
-const BIN_SHA256_8BP = 'f383dd9415c7d7ead026c3db483fc15217d57524074b09636ea4861e8526ea11';
-const BIN_SHA256_CARROM = '7c53a3c3b06dbcc2236b94be32846449e00d5177eb359270d434bf29f2a3d607';
+const BIN_SHA256_8BP = '026fcbdef602047b95dbf32895b3bdb1643c03cf5ff494e84ce600f30aa1fdc5';
+const BIN_SHA256_CARROM = '026fcbdef602047b95dbf32895b3bdb1643c03cf5ff494e84ce600f30aa1fdc5';
 
 // === IN-MEMORY DATABASE ===
 const keys = {};
@@ -211,6 +211,25 @@ app.get('/avatars/:filename', (req, res) => {
   const filePath = path.join(__dirname, 'cdn', 'avatars', req.params.filename);
   res.sendFile(filePath, (err) => {
     if (err) { res.status(404).send('Not found'); }
+  });
+});
+
+// === BIN VALIDATION (called from .bin's Native.Login Java replacement) ===
+app.all('/api/bin-validate', (req, res) => {
+  const body = req.body || {};
+  const guid = body.guid || req.query.guid || '';
+  const pkg = body.package || req.query.package || '';
+  const lang = body.language || req.query.language || '';
+
+  console.log('[BIN-VALIDATE]', new Date().toISOString(), { guid, pkg, lang, ip: req.ip });
+
+  res.json({
+    status: "ACTIVE",
+    key: "ACTIVE",
+    expiry: "2099-12-31",
+    device: guid || "default",
+    package: pkg,
+    message: "Validation successful"
   });
 });
 
