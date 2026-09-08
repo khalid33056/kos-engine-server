@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const BASE_URL = 'https://kos-engine-server-1.onrender.com';
-const BIN_SHA256_8BP = 'f383dd9415c7d7ead026c3db483fc15217d57524074b09636ea4861e8526ea11';
-const BIN_SHA256_CARROM = 'f383dd9415c7d7ead026c3db483fc15217d57524074b09636ea4861e8526ea11';
+const BIN_SHA256_8BP = 'b9abea3ab9583491fc3187cacf15df0bd549458cee119ac1eca7101f72bfe037';
+const BIN_SHA256_CARROM = 'b9abea3ab9583491fc3187cacf15df0bd549458cee119ac1eca7101f72bfe037';
 
 // === IN-MEMORY DATABASE ===
 const keys = {};
