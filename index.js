@@ -44,7 +44,7 @@ app.all('/connect', (req, res) => {
   
   res.json({
     success: true,
-    short_device_id: androidId,
+    short_device_id: String(androidId || '').padEnd(8, '0').slice(0, 8),
     message: "Connected successfully.",
     redirect: "",
     nonce: "LY1+vc0VlLC1EB4a90Qrow==",
@@ -54,16 +54,17 @@ app.all('/connect', (req, res) => {
     ],
     game_packages: ["com.miniclip.eightballpool", "com.miniclip.carrom"],
     games: [
-      { package: "com.miniclip.eightballpool" },
-      { package: "com.miniclip.carrom" }
+      { game_package: "com.miniclip.eightballpool", game_name: "8 Ball Pool", game_version: "56.29.2", game_ver_code: 4014, game_image_url: BASE_URL + "/cdn/logo/eightball.png" },
+      { game_package: "com.miniclip.carrom", game_name: "Carrom Pool", game_version: "19.4.0", game_ver_code: 1477, game_image_url: BASE_URL + "/cdn/logo/carrom.png" }
     ],
-    key_info: [{ key: "ACTIVE", valid: true, expiry: "2099-12-31", type: "premium", max_devices: 99 }],
+    key_info: [{ key_string: "ACTIVE", valid: true, expiry: "2099-12-31", type: "premium", max_devices: 99 }],
     unlockable_games: [
       { game_package: "com.miniclip.eightballpool" },
       { game_package: "com.miniclip.carrom" }
     ],
     supported_games: [
       {
+        game_package: "com.miniclip.eightballpool",
         package: "com.miniclip.eightballpool",
         name: "8 Ball Pool",
         version: "56.29.2",
@@ -75,6 +76,7 @@ app.all('/connect', (req, res) => {
         }
       },
       {
+        game_package: "com.miniclip.eightballpool",
         package: "com.miniclip.eightballpool",
         name: "8 Ball Pool",
         version: "56.29.1",
@@ -86,6 +88,7 @@ app.all('/connect', (req, res) => {
         }
       },
       {
+        game_package: "com.miniclip.carrom",
         package: "com.miniclip.carrom",
         name: "Carrom Pool",
         version: "19.4.0",
@@ -97,6 +100,7 @@ app.all('/connect', (req, res) => {
         }
       },
       {
+        game_package: "com.miniclip.carrom",
         package: "com.miniclip.carrom",
         name: "Carrom Pool",
         version: "19.3.0",
